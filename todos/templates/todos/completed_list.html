@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{%block content%}    
+    <table style="font-size: small; margin-left: 5px;">
+        <h4 style="text-align: center;"><b>Tasks table</b></h4>
+        <h6 style="text-align: left; margin-left: 5px;"><a href="{% url 'todos:create-task' %}" style="text-decoration: none;">Create a task</a></h6>
+        <h6 style="text-align: left; margin-left: 5px; display: inline;"><a href="{% url 'todos:task-list' %}" style="text-decoration: none;">All tasks</a></h6>
+        <h6 style="text-align: left; margin-left: 10px; display: inline;"><a href="{% url 'todos:non-completed-list' %}" style="text-decoration: none;">Non completed</a></h6>
+        <h6 style="text-align: left; margin-left: 10px; display: inline;"><a href="{% url 'todos:task-completed-list' %}" style="text-decoration: none;">Completed tasks</a></h6>
+        <tr>
+            <th style="padding-right: 5px; text-align:center; border: 1px solid black;"><b>Task</b></th>
+            <th style="padding-right: 5px; text-align:center; border: 1px solid black;"><b>Progression</b></th>
+            <th style="padding-right: 5px; text-align:center; border: 1px solid black;"><b>Created date</b></th>
+            <th style="padding-right: 5px; text-align:center; border: 1px solid black;"><b>Completed date</b></th>
+            <th style="padding-right: 5px; text-align:center; border: 1px solid black;"><b>Actions</b></th>
+        </tr>
+        {% for task in tasks%}
+            {% if task.complete == True%}
+            <tr style="text-align: center; border: 1px solid black;">
+                <td style="border: 1px solid black; text-align: left;">
+                    <a href="{% url 'todos:task-detail' task.pk %}" style="text-decoration: none;">{{task.title | title}}</a>
+                </td>
+                <td style="border: 1px solid black;">
+                    {% if task.complete == True%} 
+                        Completed
+                    {%else%}
+                        In Progress
+                    {%endif%}
+                </td>
+                <td style="border: 1px solid black;">
+                    {{task.date | date}}
+                </td>
+                <td style="border: 1px solid black;"> 
+                    {{task.completed_date | date}}
+                </td>
+                <td style="border: 1px solid black;">
+                    <a href="{% url 'todos:update-task' task.pk %}">update</a> / <a href="{% url 'todos:delete-task' task.pk %}">delete</a>
+                </td>
+            </tr>
+            {% endif %}
+        {%empty%}
+            <td><b>"No Task Completed"</b></td>
+        {%endfor%}
+    </table>
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="?page=1">first</a>
+            <a href="?page={{page_obj.previous_page_number}}">previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <b>{{num}}-{{page_obj.paginator.num_pages}}</b>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">next</a>
+            <a href="?page={{page_obj.paginator.num_pages}}">last</a>
+        {% endif %}
+    {% endif %}  
+{%endblock content%}

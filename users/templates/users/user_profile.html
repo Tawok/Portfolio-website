@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <section style="background-color: #eee;">
+        <div class="container py-5">      
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
+                <div class="card-body text-center">
+                  <img src="{{object.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 250px;">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0"><b>Full Name</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.first_name and object.last_name != none or empty%}
+                        <p class="text-dark mb-0">{{object.first_name | title}} {{object.last_name | title}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0"><b>Birth Date</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.birth_date != none or empty %}
+                        <p class="text-dark mb-0">{{object.birth_date | date}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0"><b>Country</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.country != none or empty %}
+                        <p class="text-dark mb-0">{{object.country.name}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0"><b>Email</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.email_address != none or empty %}
+                        <p class="text-dark mb-0">{{object.email_address}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0"><b>Mobile</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.mobile != none or empty %}
+                        <p class="text-dark mb-0">{{object.mobile}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0"><b>Phone</b></p>
+                    </div>
+                    <div class="col-sm-9">
+                      {% if object.phone != none or empty %}
+                        <p class="text-dark mb-0">{{object.phone}}</p>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="row m-0">
+                  <a class="text-end" href="{% url 'users:update-profile' object.pk%}" style="font-size: small; text-decoration:none;">update</a>
+                </div>
+              </div>
+            </div>
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <div class="card mb-4 mb-md-0">
+                    <div class="card-body">
+                      <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status</p>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            <div class="col-4">
+              <div class="card mb-lg-0">
+                <div class="card-body">
+                  <div class="row bg-warning">
+                    <p class="text-center mb-1"><b>My Sites</b></p>
+                  </div>
+                </div>
+                <div>
+                  {{object.}}
+                </div>
+                <div class="row m-0">
+                  <a class="text-end" href="{% url 'users:social' object.pk%}" style="font-size: small; text-decoration:none;">add site</a>
+                </div>
+              
+
+                  <!-- <div>
+                    <a href="{% url 'users:social' object.user.pk%}">add site</a>
+                  </div>
+                  <a href="{% url 'users:social' object.user.pk%}" style="font-size: small; text-decoration:none;">add site</a>
+                  <ul class="list-group list-group-flush rounded-3">
+                    <li class="list-group-item align-items-center">
+                      <i class="fas fa-globe fa-lg text-warning">
+                        {% for obj in object.profile%}
+                          {{obj}}
+                        {% endfor %}
+                      </i>
+                    </li>
+                  </ul> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock content %}

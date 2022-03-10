@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="POST"> {% csrf_token %}
+        <ul style=" list-style-type: none">
+            <li>
+                <b>Title</b>: {{task.title | title}}
+            </li>
+            <li><b>Description</b>:
+                {% if task.description == True %}                
+                    <p>{{task.description}}</p>
+                {% else %}
+                    <p>No description available</p>
+                {% endif %}
+            </li>
+            <li>
+                <b>Date created</b>: {{task.date | date}}
+            </li>
+            <li>
+                <b>Completed</b>: {{task.complete}}
+            </li>
+        </ul>
+        <p style="margin-left: 5px;"><strong>Are you sure you want to delete this task?</strong></p>
+        <input type="submit" value="Delete" style="margin-left: 5px;">
+        <a href="{% url 'todos:task-list' %}"><input type="submit" value="cancel" style="margin-left: 5px;"></a>
+    </form>
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="{% static 'portfolio/css/bootstrap.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- navbar -->
+    {% include 'navbar.html' %}
+    <!-- block content No.1 --> 
+    {% block content%}
+    {% endblock content%}
+    <!-- footer -->
+    <footer class="bg-secondary text-dark ms-1 me-1 mt-2 rounded">
+        <div class="container text-center text-md pt-1">
+            <div class="row">
+                <div class="col-sm-6 fw-bold text-dark text-uppercase">
+                    <p class="text-warning fw-bold text-center">
+                        contact
+                    </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 text-end">
+                                <i class="bi bi-house-fill text-warning"></i>
+                            </div>
+                            <div class="col text-start">
+                                <span class="text fw-bold" style="font-size: 15px;">
+                                    barranquilla, colombia
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 text-end">
+                                <i class="bi bi-telephone-fill text-warning"></i>
+                            </div>
+                            <div class="col text-start">
+                                <span class="text fw-bold" style="font-size: 15px;">
+                                    +57 3013776050
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 text-end">
+                                <i class="bi bi-mailbox2 text-warning"></i>
+                            </div>
+                            <div class="col text-start">
+                                <span class="text-lowercase fw-bold" style="font-size: 15px;">
+                                    hassan_muhieddine@hotmail.com
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 fw-bold text-dark text-uppercase text-center">
+                    <p class="text-warning fw-bold text-center">
+                        Social media
+                    </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-5 text-end">
+                                <i class="bi bi-facebook text-warning text-end" style="font-size: 15px;"></i>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-dark text-decoration-none" href="https://www.facebook.com/hassan.tawok/" style="font-size: 12px">Facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-5 text-end">
+                                <i class="bi bi-instagram text-warning text-end" style="font-size: 15px;"></i>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-dark text-decoration-none" href="https://www.instagram.com/hassanmuhieddine/" style="font-size: 12px">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-5 text-end">
+                                <i class="bi bi-linkedin text-warning text-end" style="font-size: 15px;"></i>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-dark text-decoration-none" href="https://www.linkedin.com/in/hassanmounirmuhieddinecalderon/" style="font-size: 12px">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-5 text-end">
+                                <i class="bi bi-github text-warning text-end" style="font-size: 15px;"></i>
+                            </div>
+                            <div class="col-2">
+                                <a class="text-dark text-decoration-none" href="https://github.com/Tawok" style="font-size: 12px">Github</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row" style="background-color: #212529">
+            <span class="text-center fw-bold text-warning" style="font-size:x-small">
+                Copyright ©2022
+            </span>              
+        </div>
+        </div>
+    </footer>
+    <script src="{% static 'portfolio/js/jquery.min.js' %}"></script>
+    <script src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

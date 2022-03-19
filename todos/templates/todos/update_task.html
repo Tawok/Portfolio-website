@@ -2,7 +2,7 @@
 {% load crispy_forms_tags%}
 
 {% block content %}
-    <form method="POST">{% csrf_token %}
+    <form method="POST" style="display:inline">{% csrf_token %}
         <ul style=" list-style-type: none">
             <li style="width: 15rem;"><b>{{form.title | as_crispy_field}}</b></li>
             <li style="width: 30rem;"><b>{{form.description | as_crispy_field}}</b></li>
@@ -10,7 +10,7 @@
         </ul>
         <p style="margin-left: 5px;"><strong>Are you sure you want to update this task?</strong></p>
         <input type="submit" value="Update" style="margin-left: 5px;">
-        <a href="{% url 'todos:task-list' %}" style="margin-left: 5px;"><input type="submit" value="cancel" style="margin-left: 5px;"></a>
     </form>
+    <a href="{% url 'todos:task-list' %}" style="margin-left: 5px;"><input type="submit" value="cancel" style="margin-left: 5px;"></a>
     
 {% endblock content %}

@@ -36,4 +36,4 @@ class ProfileForm(forms.ModelForm):
 class SocialNetworkForm(forms.ModelForm):
     class Meta:
         model = SocialNetwork
-        fields = '__all__'
+        fields = ['site_name', 'site_url']

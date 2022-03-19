@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST"> {% csrf_token %}
+    <form method="POST" style="display:inline"> {% csrf_token %}
         <ul style=" list-style-type: none">
             <li>
                 <b>Title</b>: {{task.title | title}}
@@ -22,6 +22,6 @@
         </ul>
         <p style="margin-left: 5px;"><strong>Are you sure you want to delete this task?</strong></p>
         <input type="submit" value="Delete" style="margin-left: 5px;">
-        <a href="{% url 'todos:task-list' %}"><input type="submit" value="cancel" style="margin-left: 5px;"></a>
     </form>
+    <a href="{% url 'todos:task-list' %}"><input type="submit" value="cancel" style="margin-left: 5px;"></a>
 {% endblock content %}

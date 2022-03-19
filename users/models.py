@@ -23,7 +23,7 @@ class CustomUser(AbstractUser):
         return f'{self.email}'
 
 class SocialNetwork(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     site_name = models.CharField(max_length=50, blank=True, null=True)
     site_url = models.URLField(max_length=2000, blank=True, null=True, unique=True)
 
@@ -31,7 +31,7 @@ class SocialNetwork(models.Model):
         return f"{self.site_name}"
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     email_address = models.EmailField(max_length= 255, blank=True, null=True)
@@ -40,7 +40,7 @@ class UserProfile(models.Model):
     country = CountryField(blank=True)
     birth_date = models.DateField(blank=True, null=True)
     image = models.ImageField(upload_to='profile_pics', default='default.jpg')
-    social_sites = models.ForeignKey(SocialNetwork, on_delete=models.CASCADE, blank=True, null=True)
+    social_sites = models.ManyToManyField(SocialNetwork)
 
     def __str__(self):
         return f"{self.user.email}'s Profile"

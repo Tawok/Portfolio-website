@@ -4,7 +4,7 @@
 
 {% block content %}
     <form method="POST" style="display:inline"> {% csrf_token %}
-        <ul style=" list-style-type: none">
+        <ul style="list-style-type: none">
             <li style="width:30rem"><b>{{form.first_name | as_crispy_field}}</b></li>
             <li style="width:30rem"><b>{{form.last_name | as_crispy_field}}</b></li>
             <li style="width:30rem"><b>{{form.birth_date | as_crispy_field}}</b></li>

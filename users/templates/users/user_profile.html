@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="card mb-4">
-                <div class="card-body text-center">
+                <div class="card-body text-center m-4">
                   <img src="{{object.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 250px;">
                 </div>
               </div>
@@ -104,32 +104,39 @@
               </div> -->
             <div class="col-4">
               <div class="card mb-lg-0">
-                <div class="card-body">
-                  <div class="row bg-warning">
-                    <p class="text-center mb-1"><b>My Sites</b></p>
+                <div class="card-body text-end pt-0">
+                  {% if request.user == object.user %}
+                    <a class="link" href="{% url 'users:create-site' object.pk %}" style="font-size: small; text-decoration:none;">add site</a>
+                  {% endif %}
+                  <div class="row bg-secondary">
+                    <p class="text-center mb-1">
+                      <b>My Sites</b>
+                    </p>
                   </div>
                 </div>
                 <div>
-                  {{object.}}
+                  {% for site in sites%}
+                  <ul style=" list-style-type: none;">
+                    <li class="text">
+                      <span style="text-align: inline; display:inline-block; width: 70%">
+                        <a class="link" href="{{site.site_url}}" style="text-decoration:none; color: black;"><b>{{site.site_name}}</b></a>
+                      </span>
+                      <span class="text-end" style="text-align: inline;">
+                        <a class="link" href="{% url 'users:update-site' site.pk %}" style="font-size: small; text-decoration:none;">update</a>
+                      </span>
+                      <span class="text-end" style="text-align: inline;">
+                        <a class="link" href="{% url 'users:delete-site' site.pk %}" style="font-size: small; text-decoration:none;">delete</a>
+                      </span>
+                    </li>                  
+                  </ul>
+                  {% endfor %}
                 </div>
-                <div class="row m-0">
-                  <a class="text-end" href="{% url 'users:social' object.pk%}" style="font-size: small; text-decoration:none;">add site</a>
+                <!-- <div class="row m-0">
+                  <p class="text-end mb-0">
+                    <a class="link" href="{% url 'users:update-site' object.pk %}" style="font-size: small; text-decoration:none;">update</a>
+                    <a class="link" href="{% url 'users:update-site' object.pk %}" style="font-size: small; text-decoration:none;">update</a>
+                  </p> -->                    
                 </div>
-              
-
-                  <!-- <div>
-                    <a href="{% url 'users:social' object.user.pk%}">add site</a>
-                  </div>
-                  <a href="{% url 'users:social' object.user.pk%}" style="font-size: small; text-decoration:none;">add site</a>
-                  <ul class="list-group list-group-flush rounded-3">
-                    <li class="list-group-item align-items-center">
-                      <i class="fas fa-globe fa-lg text-warning">
-                        {% for obj in object.profile%}
-                          {{obj}}
-                        {% endfor %}
-                      </i>
-                    </li>
-                  </ul> -->
               </div>
             </div>
           </div>

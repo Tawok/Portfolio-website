@@ -2,9 +2,11 @@ from django.urls import path
 from .views import (UserCreationView, 
                     UserLoginView, 
                     UserLogoutView, 
-                    UserProfileView, 
+                    UserProfileView,
+                    UpdateUserProfileView, 
                     UserSocialSitesView,
-                    UpdateUserProfileView
+                    UserSocialSitesUpdateView,
+                    UserSocialSitesDeleteView
                 )
 
 
@@ -15,5 +17,7 @@ urlpatterns = [
     path('logout/', UserLogoutView.as_view(), name='logout'),
     path('profile/<int:pk>/', UserProfileView.as_view(), name='profile'),
     path('profile/<int:pk>/update/', UpdateUserProfileView.as_view(), name='update-profile'),
-    path('profile/<int:pk>/add-site/', UserSocialSitesView.as_view(), name = 'social')
+    path('profile/<int:pk>/add-site/', UserSocialSitesView.as_view(), name = 'create-site'),
+    path('profile/<int:pk>/update-site/', UserSocialSitesUpdateView.as_view(), name = 'update-site'),
+    path('profile/<int:pk>/delete-site/', UserSocialSitesDeleteView.as_view(), name = 'delete-site'),
 ]

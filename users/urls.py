@@ -6,7 +6,11 @@ from .views import (UserCreationView,
                     UpdateUserProfileView, 
                     UserSocialSitesView,
                     UserSocialSitesUpdateView,
-                    UserSocialSitesDeleteView
+                    UserSocialSitesDeleteView,
+                    UserProjectsView,
+                    UserProjectDetailView,
+                    UserProjectDeleteView,
+                    UserProjectUpdateView,
                 )
 
 
@@ -20,4 +24,8 @@ urlpatterns = [
     path('profile/<int:pk>/add-site/', UserSocialSitesView.as_view(), name = 'create-site'),
     path('profile/<int:pk>/update-site/', UserSocialSitesUpdateView.as_view(), name = 'update-site'),
     path('profile/<int:pk>/delete-site/', UserSocialSitesDeleteView.as_view(), name = 'delete-site'),
+    path('profile/<int:pk>/add-project/', UserProjectsView.as_view(), name = 'create-project'),
+    path('profile/<int:pk>/project-detail/', UserProjectDetailView.as_view(), name = 'project-detail'),
+    path('profile/<int:pk>/project-delete/', UserProjectDeleteView.as_view(), name = 'project-delete'),
+    path('profile/<int:pk>/project-update/', UserProjectUpdateView.as_view(), name = 'project-update')
 ]

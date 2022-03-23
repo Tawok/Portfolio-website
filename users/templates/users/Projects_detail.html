@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <ul style="list-style-type: none">
+            <li><b>Project title:</b>       {{projects.title}}</li>
+            <li><b>Project Description:</b> {{projects.description}}</li>
+            <li><b>Project url:</b>         <a href="{{projects.project_url}}" target="_blank">{{projects.project_url}}</a></li>
+            <li><b>Project file:</b>        <a href="{{projects.project_file.url}}">{{projects.file_name}}</a></li>
+        </ul>
+        <a href="{% url 'users:profile' user.pk %}" style="margin-left: 5px;"><input type="submit" value="Cancel"></a>
+{% endblock content %}

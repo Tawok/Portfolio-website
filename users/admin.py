@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.forms import CharField, TextInput, Textarea
-from .models import CustomUser, SocialNetwork, UserProfile
+from .models import CustomUser, SocialNetwork, UserProfile, UserProjects
 from .forms import CustomUserForm
 
 class CostumUserAdmin(UserAdmin):
@@ -22,3 +22,4 @@ class CostumUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CostumUserAdmin)
 admin.site.register(UserProfile)
 admin.site.register(SocialNetwork)
+admin.site.register(UserProjects)

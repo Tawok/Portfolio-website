@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <form method="POST" style="display:inline"> {% csrf_token %}
+    <form method="POST" style="display:inline" enctype="multipart/form-data"> {% csrf_token %}
         <ul style="list-style-type: none">
             <li style="width:30rem"><b>{{form.first_name | as_crispy_field}}</b></li>
             <li style="width:30rem"><b>{{form.last_name | as_crispy_field}}</b></li>
@@ -12,6 +12,8 @@
             <li style="width:30rem"><b>{{form.email_address | as_crispy_field}}</b></li>
             <li style="width:30rem"><b>{{form.mobile | as_crispy_field}}</b></li>
             <li style="width:30rem"><b>{{form.phone | as_crispy_field}}</b></li>
+        <br>
+            <li style="width:30rem"><b>{{form.image | as_crispy_field}}</b></li>
         </ul>
         <input type="submit" value="Save" style="margin-left: 5px;">
     </form>

@@ -5,7 +5,7 @@
 {% block content %}
     <section style="background-color: #eee;">
         <div class="container py-5">      
-          <div class="row">
+          <div class="row g-5">
             <div class="col-lg-4">
               <div class="card mb-4">
                 <div class="card-body text-center m-4">
@@ -93,50 +93,66 @@
                 </div>
               </div>
             </div>
-              <!-- <div class="row">
-                <div class="col-md-6">
-                  <div class="card mb-4 mb-md-0">
-                    <div class="card-body">
-                      <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status</p>
+            <div class="row">
+              <div class="col-4">
+                <div class="card mb-lg-0">
+                  <div class="card-body text-end pt-0">
+                    {% if request.user == object.user %}
+                      <a class="link" href="{% url 'users:create-site' object.pk %}" style="font-size: small; text-decoration:none;">add site</a>
+                    {% endif %}
+                    <div class="row bg-secondary">
+                      <p class="text-center mb-1">
+                        <b>My Sites</b>
+                      </p>
                     </div>
-                  </div>
+                    <div class="text-start">
+                      {% for site in sites%}
+                      <ul  class="list-group" style=" list-style-type: none;">
+                        <li class="p-1">
+                            <a href="{{site.site_url}}" style="text-decoration:none; color: black;">
+                              <b>{{site.site_name}}</b>
+                            </a>
+                            <span style="float: right;">
+                              <a href="{% url 'users:update-site' site.pk %}" style="font-size: small; text-decoration:none;">update </a>
+                              <a href="{% url 'users:delete-site' site.pk %}" style="font-size: small; text-decoration:none;">delete</a>
+                            </span>
+                        </li>                  
+                      </ul>
+                      {% endfor %}
+                    </div>
+                  </div>               
                 </div>
-              </div> -->
-            <div class="col-4">
-              <div class="card mb-lg-0">
-                <div class="card-body text-end pt-0">
-                  {% if request.user == object.user %}
-                    <a class="link" href="{% url 'users:create-site' object.pk %}" style="font-size: small; text-decoration:none;">add site</a>
-                  {% endif %}
-                  <div class="row bg-secondary">
-                    <p class="text-center mb-1">
-                      <b>My Sites</b>
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  {% for site in sites%}
-                  <ul style=" list-style-type: none;">
-                    <li class="text">
-                      <span style="text-align: inline; display:inline-block; width: 70%">
-                        <a class="link" href="{{site.site_url}}" style="text-decoration:none; color: black;"><b>{{site.site_name}}</b></a>
-                      </span>
-                      <span class="text-end" style="text-align: inline;">
-                        <a class="link" href="{% url 'users:update-site' site.pk %}" style="font-size: small; text-decoration:none;">update</a>
-                      </span>
-                      <span class="text-end" style="text-align: inline;">
-                        <a class="link" href="{% url 'users:delete-site' site.pk %}" style="font-size: small; text-decoration:none;">delete</a>
-                      </span>
-                    </li>                  
-                  </ul>
-                  {% endfor %}
-                </div>
-                <!-- <div class="row m-0">
-                  <p class="text-end mb-0">
-                    <a class="link" href="{% url 'users:update-site' object.pk %}" style="font-size: small; text-decoration:none;">update</a>
-                    <a class="link" href="{% url 'users:update-site' object.pk %}" style="font-size: small; text-decoration:none;">update</a>
-                  </p> -->                    
-                </div>
+              </div>
+              <div class="col-auto">   
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-end pt-0">
+                    {% if request.user == object.user %}
+                      <a class="link" href="{% url  'users:create-project' user.pk%}" style="font-size: small; text-decoration:none;">add project</a>
+                    {% endif %}
+                    <div class="row bg-secondary">
+                      <p class="text-center mb-1">
+                        <b>My Projects</b>
+                      </p>
+                    </div>
+                    <div class="text-start">
+                      {% for project in projects%}
+                      <ul  class="list-group" style=" list-style-type: none;">
+                        <li>
+                          <a href="{% url 'users:project-detail' project.pk %}">
+                            {{project.title}}
+                          </a>
+                          <span style="float: right;">
+                            <a href="{% url 'users:project-update' project.pk %}" style="font-size: small; text-decoration:none;">update </a>
+                            <a href="{% url 'users:project-delete' project.pk %}" style="font-size: small; text-decoration:none;">delete</a>
+                          </span>
+                        </li>                  
+                      </ul>
+                      {% endfor %}
+                    </div>
+                  </div>               
+                </div>     
               </div>
             </div>
           </div>

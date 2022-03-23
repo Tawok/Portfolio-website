@@ -1,5 +1,5 @@
 from django import forms
-from .models import CustomUser, SocialNetwork, UserProfile
+from .models import CustomUser, SocialNetwork, UserProfile, UserProjects
 
 class CustomUserForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -28,7 +28,7 @@ class CustomUserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['first_name', 'last_name', 'birth_date', 'country', 'email_address', 'mobile', 'phone']
+        fields = ['first_name', 'last_name', 'birth_date', 'country', 'email_address', 'mobile', 'phone', 'image']
 
         widgets = {'birth_date': forms.DateInput(attrs={'class':'form-control', 'type':'date'})}
 
@@ -37,3 +37,8 @@ class SocialNetworkForm(forms.ModelForm):
     class Meta:
         model = SocialNetwork
         fields = ['site_name', 'site_url']
+
+class UserprojectsForm(forms.ModelForm):
+    class Meta:
+        model = UserProjects
+        fields = ['title', 'description', 'project_url', 'project_file']
